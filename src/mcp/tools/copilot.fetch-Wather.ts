@@ -38,11 +38,33 @@ export class CopilotFetchWather implements MCPStrategy {
     await this.server.connect(transport);
   }
 
+  /*
+  
   async run(prompt: string): Promise<any> {
     // Esto puede integrarse con un LLM para enviar prompts
     return {
       message: "Servidor Copilot está activo. Interfaz MCP lista.",
       prompt,
     };
+  }
+
+  */
+
+  async run(prompt: string): Promise<any> {
+    // Simula parsing básico del prompt para extraer el nombre de la ciudad
+    const match = prompt.match(/(?:en|in)\s+(\w+)/i);
+    const city = match?.[1] ?? 'una ciudad desconocida';
+  
+    // Ejecuta la misma lógica que tu herramienta MCP
+    return {
+      content: [
+        {
+          type: "text",
+          text: `The weather in ${city} is sunny with a temperature of 25°C.`,
+        }
+      ]
+    };
+
+
   }
 }
