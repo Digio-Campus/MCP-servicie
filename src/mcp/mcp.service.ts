@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { MCPStrategy } from './mcp.interface';
-import { CopilotStrategy } from './strategies/copilot.strategy';
+import { CopilotFetchWather } from './tools/copilot.fetch-Wather';
 
 @Injectable()
 export class McpService {
     private strategies: Record<string, MCPStrategy> = {
-        copilot: new CopilotStrategy(),
+        copilot: new CopilotFetchWather(),
         // Agrega aquí más estrategias (gpt, mistral, etc.)
     };
 
